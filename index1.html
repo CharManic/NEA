@@ -1,0 +1,168 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Chat Interface</title>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href=".\style.css">
+
+</head>
+
+<body>
+
+<div class="app-container">
+
+    <!-- TOP NAVIGATION -->
+    <div class="top-bar">
+
+        <div class="nav-item-custom nav-chats">
+            Chats
+        </div>
+
+        <div class="nav-item-custom nav-blogs">
+            Blogs
+        </div>
+
+        <div class="nav-item-custom nav-spacer">
+        </div>
+
+        <div class="nav-item-custom nav-information">
+            Chat Information
+        </div>
+
+    </div>
+
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+
+
+        <!-- LEFT SIDEBAR -->
+        <div class="sidebar">
+
+
+            <!-- CHAT LIST -->
+            <div id="chat-list">
+
+
+            </div>
+
+            <template id="template-chat">
+                <div class="chat-box">
+                    <span id="username"></span>
+                    <p id="message-preview"></p>
+                </div>
+            </template>
+
+
+            <!-- USER INFORMATION -->
+            <div class="user-information">
+                User Information
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT CHAT SECTION -->
+        <div class="chat-section">
+
+
+            <!-- CHAT HEADER -->
+            <div class="chat-header">
+            </div>
+
+
+            <!-- MESSAGE THREAD -->
+            <div class="message-thread" id="messageThread">
+
+
+            </div>
+
+
+            <!-- MESSAGE INPUT -->
+            <form class="message-input-area" id="messageForm">
+
+                <input
+                    type="text"
+                    class="form-control message-input"
+                    id="messageInput"
+                    placeholder="Type a message..."
+                    autocomplete="off"
+                >
+
+                <button
+                    type="submit"
+                    class="btn btn-light send-button">
+                    Send
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- JAVASCRIPT -->
+<script>
+
+    // SELECT CHAT
+    document.querySelectorAll('.chat-box').forEach(chat => {
+
+        chat.addEventListener('click', () => {
+
+            document.querySelectorAll('.chat-box').forEach(item => {
+                item.classList.remove('active');
+            });
+
+            chat.classList.add('active');
+
+        });
+
+    });
+
+
+    // SEND MESSAGE
+    document.getElementById('messageForm').addEventListener('submit', function(e) {
+
+        e.preventDefault();
+
+        const input = document.getElementById('messageInput');
+
+        const message = input.value.trim();
+
+        if (message === '') return;
+
+        const messageElement = document.createElement('div');
+
+        messageElement.className = 'message sent';
+
+        messageElement.textContent = message;
+
+        const thread = document.getElementById('messageThread');
+
+        thread.appendChild(messageElement);
+
+        input.value = '';
+
+        // Scroll to latest message
+        thread.scrollTop = thread.scrollHeight;
+
+        input.focus();
+
+    });
+
+</script>
+
+</body>
+</html>

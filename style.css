@@ -1,0 +1,324 @@
+/* NOTE: AI has been used to design the UI based on the illustrations I have made.
+         This is due to the time constraints present, plus I don't expect any marks for UI design.
+
+
+*/
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+/* Main */
+.app-container {
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+}
+
+/* Top Navigation */
+.top-bar {
+    width: 100%;
+    height: 65px;
+    min-height: 65px;
+    display: flex;
+    border: 3px solid black;
+    flex-shrink: 0;
+}
+
+.nav-item-custom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 3px solid black;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.nav-item-custom:hover {
+    background-color: #eeeeee;
+}
+
+.nav-chats {
+    width: 20%;
+}
+
+.nav-blogs {
+    width: 20%;
+}
+
+.nav-spacer {
+    width: 7%;
+}
+
+.nav-information {
+    flex: 1;
+}
+
+/* MAIN CONTENT */
+.main-content {
+    width: 100%;
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    border: 3px solid black;
+    border-top: 0;
+    overflow: hidden;
+}
+
+/* LEFT SIDEBAR */
+.sidebar {
+    width: 40%;
+    max-width: 360px;
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    border-right: 3px solid black;
+    min-height: 0;
+}
+
+/* CHAT LIST */
+#chat-list {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 10px 20px;
+}
+
+.chat-box {
+    width: 100%;
+    min-height: 65px;
+    margin-bottom: 7px;
+    padding: 10px 15px;
+    box-sizing: border-box;
+
+    border: 2px solid #222;
+    border-radius: 5px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    cursor: pointer;
+    background: white;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.username {
+    font-size: 22.5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.chat-box p {
+    margin: 3px 0 0;
+    font-size: 18px;
+    color: #222;
+}
+
+.chat-box:hover {
+    background: #f5f5f5;
+    border-color: #aaa;
+}
+
+.chat-box.active {
+    background: #eaf2ff;
+    border-color: #6b9cff;
+}
+
+/* USER INFORMATION */
+.user-information {
+    height: 70px;
+    min-height: 70px;
+    border-top: 3px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.user-information:hover {
+    background: #eeeeee;
+}
+
+/* CHAT SECTION */
+.chat-section {
+    flex: 1;
+    min-width: 0;
+    min-height: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 15px 30px;
+}
+
+/* CHAT HEADER */
+.chat-header {
+    height: 45px;
+    min-height: 45px;
+    width: 40%;
+    border: 3px solid black;
+    margin-bottom: 10px;
+    flex-shrink: 0;
+}
+
+/* MESSAGE THREAD */
+.message-thread {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* MESSAGE BUBBLES */
+.message {
+    border: 3px solid black;
+    min-height: 40px;
+    width: 35%;
+    padding: 10px;
+    overflow-wrap: anywhere;
+    font-size: 16px;
+}
+
+.message.received {
+    align-self: flex-start;
+}
+
+.message.sent {
+    align-self: flex-end;
+}
+
+/* MESSAGE INPUT AREA */
+.message-input-area {
+    min-height: 75px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.message-input {
+    flex: 1;
+    height: 45px;
+    border: 3px solid black;
+    border-radius: 0;
+}
+
+.send-button {
+    height: 45px;
+    min-width: 80px;
+    border: 3px solid black;
+    border-radius: 0;
+}
+
+/* SCROLLBARS */
+.chat-list::-webkit-scrollbar,
+.message-thread::-webkit-scrollbar {
+    width: 9px;
+}
+
+.chat-list::-webkit-scrollbar-thumb,
+.message-thread::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+
+.chat-list::-webkit-scrollbar-track,
+.message-thread::-webkit-scrollbar-track {
+    background: #eeeeee;
+}
+
+/* FIREFOX SCROLLBARS */
+.chat-list,
+.message-thread {
+    scrollbar-width: thin;
+    scrollbar-color: #888 #eeeeee;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+
+    .top-bar {
+        height: 55px;
+        min-height: 55px;
+    }
+
+    .nav-item-custom {
+        font-size: 15px;
+    }
+
+    .nav-chats {
+        width: 25%;
+    }
+
+    .nav-blogs {
+        width: 25%;
+    }
+
+    .nav-spacer {
+        width: 0;
+        display: none;
+    }
+
+    .sidebar {
+        width: 35%;
+        min-width: 110px;
+        max-width: none;
+    }
+
+    .chat-list {
+        padding: 8px;
+    }
+
+    .chat-box {
+        min-height: 48px;
+        font-size: 14px;
+    }
+
+    .user-information {
+        font-size: 14px;
+        min-height: 60px;
+        height: 60px;
+    }
+
+    .chat-section {
+        padding: 10px;
+    }
+
+    .chat-header {
+        width: 70%;
+    }
+
+    .message {
+        width: 85%;
+        font-size: 14px;
+    }
+
+    .message-input-area {
+        min-height: 65px;
+    }
+
+    .send-button {
+        min-width: 55px;
+        font-size: 13px;
+    }
+}
